@@ -1,0 +1,14 @@
+web:
+    image: ubuntu/nginx
+    ports:
+        - "8080:80"
+    volumes:
+        - .:/var/www
+        - ./config/vhost.conf:/etc/nginx/sites-enabled/default
+    links:
+        - php
+php:
+    image: phpdockerio/php7-fpm
+    volumes:
+        - ./config/php-fpm.conf:/etc/php5/fpm/php-fpm.conf
+        - .:/var/www

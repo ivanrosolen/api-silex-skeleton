@@ -1,4 +1,4 @@
-# Retail PIP API
+# API Silex Skeleton
 
 ## Install
 
@@ -8,7 +8,7 @@ command on project root:
 ```bash
 ./bin/minion
 
-3) Install
+3) Start
 
 ```
 
@@ -20,9 +20,9 @@ Run `./bin/minion` and you will see this options:
 
 1) Help
 2) PHP Docs
-3) Install
-3) Close
-4) Quit
+3) Start
+4) Close
+5) Quit
 
 ## Change log
 

@@ -19,9 +19,13 @@ command on project root:
 Run `./bin/minion` and you will see this options:
 
 1) Help
+
 2) PHP Docs
+
 3) Start
+
 4) Close
+
 5) Quit
 
 ## Change log

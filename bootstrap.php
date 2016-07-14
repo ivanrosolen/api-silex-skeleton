@@ -1,26 +1,33 @@
 <?php
 /**
- * This file is part of reatil pip api application.
+ * This file is part of api silex skeleton
  *
- * @copyright 2015 Arizona Tecnologia - All Rights Reserved
- * @link      https://github.com/Arizona-Tecnologia/dragndroptool
+ * PHP version 7
+ *
+ * @category  PHP
+ * @package   Xuplau
+ * @author    Ivan Rosolen <ivanrosolen@gmail.com>
+ * @author    William Espindola <oi@williamespindola.com.br>
+ * @copyright 2016 Xuplau
+ * @license   MIT
+ * @link      https://github.com/ivanrosolen/api-silex-skeleton
  */
 
-include_once __DIR__.'/vendor/autoload.php';
+use Xuplau\Application;
 
-use ArizonaTecnologia\RetailPIP\Application;
+define('DS', DIRECTORY_SEPARATOR);
+define('APP_ROOT', realpath(__DIR__));
+
+require_once realpath(__DIR__.'/vendor/autoload.php');
 
 return call_user_func(function () {
-    $settings = include __DIR__ . '/config/settings.php';
+    $settings = require_once realpath(__DIR__.'/config/settings.php');
 
     foreach ($settings['php'] as $key => $value) {
         ini_set($key, $value);
     }
 
     $settings['debug'] = (bool) $settings['debug'];
-    $settings['pretty'] = array_key_exists('pretty', $_GET);
-
-    unset($_GET['pretty']);
 
     $application = new Application($settings);
 

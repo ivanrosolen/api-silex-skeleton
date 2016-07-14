@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+  php:
+    volumes:
+      - ./logs/php:/var/log/api-silex-skeleton/php
+
+  environment:
+    API_URL: 'http://docker.dev'
+
+    # APIPDB
+    APIPDB_HOST:     'apidb'
+    APIPDB_DBNAME:   'api'
+    APIPDB_USER:     'api'
+    APIPDB_PASSWORD: 'api'

@@ -1,14 +1,44 @@
-web:
-    image: ubuntu/nginx
+version: '2'
+
+services:
+  web:
+    image: nginx:stable
     ports:
-        - "8080:80"
+      - "80:80"
+      - "443:443"
     volumes:
-        - .:/var/www
-        - ./config/vhost.conf:/etc/nginx/sites-enabled/default
+      # static files of api silex skeleton
+      - .:/var/www/html/
+      # nginx custom configs
+      - ./config/docker/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./config/docker/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
     links:
-        - php
-php:
-    image: phpdockerio/php7-fpm
+      - php
+
+  php:
+    image: arizona/php7-fpm-imagemagick:stable
     volumes:
-        - ./config/php-fpm.conf:/etc/php5/fpm/php-fpm.conf
-        - .:/var/www
+      # php files
+      - .:/var/www/html/
+      # php custom configs
+      - ./config/docker/php/php-fpm.conf:/usr/local/etc/php-fpm.conf
+      - ./config/docker/php/php-fpm.d/docker.conf:/usr/local/etc/php-fpm.d/docker.conf
+      - ./config/docker/php/php-fpm.d/www.conf:/usr/local/etc/php-fpm.d/www.conf
+      - ./config/docker/php/php-fpm.d/zz-docker.conf:/usr/local/etc/php-fpm.d/zz-docker.conf
+    extends:
+      file: ./config/docker/envs/develop.yml
+      service: php
+    links:
+       - apidb
+
+  apidb:
+    image: mysql:5.7
+    ports:
+       - "3306:3306"
+    volumes:
+      - /var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=api
+      - MYSQL_USER=api
+      - MYSQL_PASSWORD=api

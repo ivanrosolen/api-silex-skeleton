@@ -1,0 +1,34 @@
+<?php
+/**
+ * This file is part of api silex skeleton
+ *
+ * PHP version 7
+ *
+ * @category  PHP
+ * @package   Xuplau
+ * @author    Ivan Rosolen <ivanrosolen@gmail.com>
+ * @author    William Espindola <oi@williamespindola.com.br>
+ * @copyright 2016 Xuplau
+ * @license   MIT
+ * @link      https://github.com/ivanrosolen/api-silex-skeleton
+ */
+
+return [
+    'debug' => true,
+    'version' => '1.0.0',
+    'php' => [
+        'date.timezone'           => 'America/Sao_Paulo',
+        'display_errors'          => true,
+        'display_startup_errors'  => true,
+        'error_reporting'         => E_ALL & ~E_NOTICE & ~E_DEPRECATED
+    ],
+    'apiurl' => getenv('API_URL'),
+    'apidb' => [
+        'host'      => getenv('APIPDB_HOST'),
+        'dbname'    => getenv('APIPDB_DBNAME'),
+        'user'      => getenv('APIPDB_USER'),
+        'password'  => getenv('APIPDB_PASSWORD'),
+        'driver'    => 'pdo_mysql',
+        'charset'   => 'utf8mb4'
+    ]
+];

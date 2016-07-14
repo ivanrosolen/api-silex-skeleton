@@ -6,6 +6,7 @@ log/access.log
 log/error.log
 cache
 config/settings.ini
+config/settings.php
 
 # numerous always-ignore extensions
 *.diff

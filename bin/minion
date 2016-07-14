@@ -10,7 +10,7 @@ PS3='bannnaaaaaaa: '
 options=(
 "Help"
 "PHP Docs"
-"Install"
+"Start"
 "Stop"
 "Quit"
 )
@@ -26,21 +26,19 @@ do
                 -d src/ \
                 --target ./docs/php-html \
                 --cache-folder ./cache \
-                --title "Retail PIP API Documentation"
+                --title "API Silex Skeleton"
             ./vendor/bin/phpdoc \
                 -d src/ \
                 --target ./docs/php-html \
                 --cache-folder ./cache \
                 --template xml
-                --title "Retail PIP API Documentation"
+                --title "API Silex Skeleton"
             ./vendor/bin/phpdocmd ./docs/php-html/structure.xml ./docs/php-md
             break
             ;;
-        "Install")
+        "Start")
             echo "Installing..."
-            docker build -t ubuntu/nginx .
             docker-compose up -d
-            composer install
             break
             ;;
         "Stop")

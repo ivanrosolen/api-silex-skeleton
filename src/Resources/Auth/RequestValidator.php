@@ -47,8 +47,6 @@ class RequestValidator
 
         if(count($matches) > 0) return;
 
-        //todo: if logout save on blacklist
-
         $token = str_replace('Bearer ', '', $request->headers->get('Authorization'));
 
         if (!$token)
@@ -70,7 +68,7 @@ class RequestValidator
             return $application->json('Expired',412);
         }
 
-        // todo: check is user is active
+        // todo: check if user is active?
 
     }
 }

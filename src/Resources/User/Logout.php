@@ -17,6 +17,7 @@ namespace Xuplau\Resources\User;
 
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
+use Lcobucci\JWT\Parser;
 
 /**
  * Resource that list users
@@ -37,23 +38,26 @@ class Logout
      * @param String $id Id of product
      * @return Array Json with product
      */
-    public function __invoke(
-        Application $application,
-        Request $request,
-        $page = null
-    ) {
+    public function __invoke(Application $application, Request $request)
+    {
 
-        $page   = (!empty((int)$page)) ? $page : 1;
-        $offset = ($page == 1) ? '0' : ($page*50)-50;
-        $limit  = 10;
+        $uri = $request->getRequestUri();
 
-        $users = $application['user']->fetchAll($limit, $offset);
+        $token = str_replace('Bearer ', '', $request->headers->get('Authorization'));
 
-        if (!$users)
-            return $application->json([], 404);
+        if (!$token)
+            return $application->json('Expectation Failed',417);
 
-        // colocar rmm4 links
+        $parser = new Parser;
 
-        return $application->json($users);
+        $jwt = $parser->parse($token);
+        $this->id = $jwt->getHeader('jti');
+
+        $blacklist = $application['blacklist']->save($this->id,'logout');
+
+        if (!$blacklist)
+            return $application->json('', 404);
+
+        return $application->json('', 200);
     }
 }

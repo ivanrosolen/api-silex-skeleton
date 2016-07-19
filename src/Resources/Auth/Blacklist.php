@@ -53,11 +53,10 @@ class Blacklist
 
     public function save()
     {
-        $blacklist = $this->application['blacklist']->save($this->id);
+        $blacklist = $this->application['blacklist']->save($this->id,'block');
 
-        //todo: type of black list, logout or block
         if (!$blacklist)
-            return $this->application->json([], 404);
+            return $this->application->json('', 404);
 
     }
 

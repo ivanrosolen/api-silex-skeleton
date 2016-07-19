@@ -47,7 +47,7 @@ class Create
         $users = $application['user']->create($postData);
 
         if (!$users)
-            return $application->json([], 404);
+            return $application->json('', 404);
 
         // colocar rmm4 links
 

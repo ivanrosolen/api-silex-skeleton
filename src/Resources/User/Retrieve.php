@@ -50,7 +50,7 @@ class Retrieve
         $users = $application['user']->fetchAll($limit, $offset);
 
         if (!$users)
-            return $application->json([], 404);
+            return $application->json('', 404);
 
         // colocar rmm4 links
 

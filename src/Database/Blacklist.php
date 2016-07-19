@@ -20,6 +20,10 @@ use Xuplau\Database\Sql\FindByKeySql;
 
 class Blacklist
 {
+
+    const LOGOUT = 1;
+    const BLOCK  = 2;
+
     private $connection;
     private $tableName;
 
@@ -45,13 +49,15 @@ class Blacklist
         return $token[0];
     }
 
-    public function save($token_id)
+    public function save($token_id,$type)
     {
 
         $data['token_id'] = $token_id;
+        $data['type']     = ($type == 'logout') ? self::LOGOUT : self::BLOCK;
         $data['created']  = date('Y-m-d H:i:s');
 
         $names = ['token_id' =>':token_id',
+                  'type'     =>':type',
                   'created'  =>':created'];
 
         $queryBuilder = $this->connection->createQueryBuilder();
@@ -62,7 +68,7 @@ class Blacklist
             $query->setParameter(':'.$key,$value);
         }
 
-        $query->execute();
+        return (bool) $query->execute();
 
     }
 

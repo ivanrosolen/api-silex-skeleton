@@ -14,6 +14,7 @@ services:
       APIPDB_USER:     'api'
       APIPDB_PASSWORD: 'api'
 
-      AUTH_ISSUER:   'http://docker.dev'
-      AUTH_AUDIENCE: 'http://docker.dev'
-      AUTH_KEY:      'Xuplau'
+      AUTH_ISSUER:     'http://docker.dev'
+      AUTH_AUDIENCE:   'http://docker.dev'
+      AUTH_KEY:        'Xuplau'
+      AUTH_EXPIRATION: '3600'

@@ -13,7 +13,7 @@
  * @link      https://github.com/ivanrosolen/api-silex-skeleton
  */
 
-namespace Xuplau\Resources\User;
+namespace Xuplau\Resources\Auth;
 
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
@@ -24,7 +24,7 @@ use Xuplau\Resources\Auth\Create as AuthCreate;
  *
  * @version 1.0.0
  *
- * @package Xuplau\Resources\User
+ * @package Xuplau\Resources\Auth
  * @author  Ivan Rosolen <ivanrosolen@gmail.com>
  * @author  William Espindola <oi@williamespindola.com.br>
  */

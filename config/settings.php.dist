@@ -32,8 +32,9 @@ return [
         'charset'   => 'utf8mb4'
     ],
     'auth' => [
-        'issuer'   => getenv('AUTH_ISSUER'),
-        'audience' => getenv('AUTH_AUDIENCE'),
-        'key'      => getenv('AUTH_KEY')
+        'issuer'     => getenv('AUTH_ISSUER'),
+        'audience'   => getenv('AUTH_AUDIENCE'),
+        'key'        => getenv('AUTH_KEY'),
+        'expiration' => getenv('AUTH_EXPIRATION')
     ]
 ];

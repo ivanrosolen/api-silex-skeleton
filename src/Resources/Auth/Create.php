@@ -65,7 +65,7 @@ class Create
                          ->setId($id, true)
                          ->setIssuedAt(time())
                          ->setNotBefore(time() - 1)
-                         ->setExpiration(time() + 3600)
+                         ->setExpiration(time() + $this->settings['expiration'])
                          ->set('renew', $this->renew)
                          ->set('hash',  $this->userHash)
                          ->sign($signer, $this->settings['key'])

@@ -17,9 +17,10 @@ namespace Xuplau\Resources\User;
 
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
+use Xuplau\Resources\Auth\Create as AuthCreate;
 
 /**
- * Resource that create one user
+ * Resource that list users
  *
  * @version 1.0.0
  *
@@ -27,31 +28,35 @@ use Symfony\Component\HttpFoundation\Request;
  * @author  Ivan Rosolen <ivanrosolen@gmail.com>
  * @author  William Espindola <oi@williamespindola.com.br>
  */
-class Create
+class Login
 {
     /**
      * Invokes route
      *
      * @param Application $application Application instance
-     * @param Request     $request Request instance
-     * @param String      $status Status of jobs
-     * @return Array Json
+     * @param Request $request Request instance
+     * @param String $id Id of product
+     * @return Array Json with product
      */
     public function __invoke(Application $application, Request $request)
     {
 
         $postData = $request->request->all();
 
-        $application['user.validator']->assert($postData);
+        $application['login.validator']->assert($postData);
 
-        $users = $application['user']->create($postData);
+        $user = $application['user']->login($postData);
 
-        if (!$users)
-            return $application->json([], 404);
+        if (!$user)
+            return $application->json('Login inválido', 400);
 
-        // colocar rmm4 links
+        $auth  = new AuthCreate($application['auth'],$user['hash']);
+        $token = $auth->create();
 
-        return $application->json($users);
-
+        return $application->json(['jwt'   => $token['jwt'],
+                                   'renew' => $token['renew'],
+                                   'name'  => $user['name'],
+                                   'email' => $user['email'],
+                                   'hash'  => $user['hash']]);
     }
 }

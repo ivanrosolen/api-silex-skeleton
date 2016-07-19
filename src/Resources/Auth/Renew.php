@@ -13,45 +13,35 @@
  * @link      https://github.com/ivanrosolen/api-silex-skeleton
  */
 
-namespace Xuplau\Resources\User;
+namespace Xuplau\Resources\Auth;
 
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
+use Xuplau\Resources\Auth\Create as AuthCreate;
 
 /**
- * Resource that create one user
+ * Resource that list users
  *
  * @version 1.0.0
  *
- * @package Xuplau\Resources\User
+ * @package Xuplau\Resources\Auth
  * @author  Ivan Rosolen <ivanrosolen@gmail.com>
  * @author  William Espindola <oi@williamespindola.com.br>
  */
-class Create
+class Renew
 {
     /**
      * Invokes route
      *
      * @param Application $application Application instance
-     * @param Request     $request Request instance
-     * @param String      $status Status of jobs
-     * @return Array Json
+     * @param Request $request Request instance
+     * @param String $id Id of product
+     * @return Array Json with product
      */
     public function __invoke(Application $application, Request $request)
     {
 
-        $postData = $request->request->all();
 
-        $application['user.validator']->assert($postData);
-
-        $users = $application['user']->create($postData);
-
-        if (!$users)
-            return $application->json([], 404);
-
-        // colocar rmm4 links
-
-        return $application->json($users);
 
     }
 }

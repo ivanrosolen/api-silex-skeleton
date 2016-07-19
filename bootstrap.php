@@ -15,7 +15,7 @@
 
 use Xuplau\Application;
 
-define('DS', DIRECTORY_SEPARATOR);
+define('DS',       DIRECTORY_SEPARATOR);
 define('APP_ROOT', realpath(__DIR__));
 
 require_once realpath(__DIR__.'/vendor/autoload.php');

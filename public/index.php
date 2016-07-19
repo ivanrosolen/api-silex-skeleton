@@ -21,10 +21,10 @@ use Xuplau\Provider\ValidationServiceProvider;
 
 $application = require_once realpath(__DIR__.'/../bootstrap.php');
 
-$application->register(new DoctrineServiceProvider());
+$application->register(new DoctrineServiceProvider);
 $application->register(new RouteServiceProvider);
-$application->register(new DatabaseServiceProvider());
-$application->register(new ContentNegotiationServiceProvider());
-$application->register(new ValidationServiceProvider());
+$application->register(new DatabaseServiceProvider);
+$application->register(new ContentNegotiationServiceProvider);
+$application->register(new ValidationServiceProvider);
 
 $application->run();

@@ -26,7 +26,9 @@ Run `./bin/minion` and you will see this options:
 
 4) Close
 
-5) Quit
+5) Restart
+
+6) Quit
 
 ## Change log
 

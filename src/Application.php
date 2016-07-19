@@ -16,7 +16,6 @@
 namespace Xuplau;
 
 use Silex\Application as SilexApplication;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Main application File

@@ -30,5 +30,10 @@ return [
         'password'  => getenv('APIPDB_PASSWORD'),
         'driver'    => 'pdo_mysql',
         'charset'   => 'utf8mb4'
+    ],
+    'auth' => [
+        'issuer'   => getenv('AUTH_ISSUER'),
+        'audience' => getenv('AUTH_AUDIENCE'),
+        'key'      => getenv('AUTH_KEY')
     ]
 ];

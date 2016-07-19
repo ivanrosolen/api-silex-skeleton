@@ -18,7 +18,6 @@ namespace Xuplau\Provider;
 use Xuplau\Handler\ErrorHandler;
 use Silex\Application;
 use Silex\ServiceProviderInterface;
-use Symfony\Component\HttpFoundation\Request;
 
 class ContentNegotiationServiceProvider implements ServiceProviderInterface
 {

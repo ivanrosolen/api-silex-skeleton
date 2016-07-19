@@ -18,6 +18,7 @@ namespace Xuplau\Provider;
 use Silex\Application;
 use Silex\ServiceProviderInterface;
 use Xuplau\Validation\Rules\UserInput;
+use Xuplau\Validation\Rules\LoginInput;
 
 /**
  * Serivice to provide all validators for the application
@@ -41,6 +42,9 @@ class ValidationServiceProvider implements ServiceProviderInterface
     {
         $application['user.validator'] = function() use ($application) {
             return new UserInput();
+        };
+        $application['login.validator'] = function() use ($application) {
+            return new LoginInput();
         };
     }
 

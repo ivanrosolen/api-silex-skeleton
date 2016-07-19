@@ -12,6 +12,7 @@ options=(
 "PHP Docs"
 "Start"
 "Stop"
+"Restart"
 "Quit"
 )
 select opt in "${options[@]}"
@@ -44,6 +45,11 @@ do
         "Stop")
             echo "Stoping..."
             docker stop $(docker ps -a -q)
+            break
+            ;;
+        "Restart")
+            echo "Restarting..."
+            docker-compose up -d --force-recreate
             break
             ;;
         "Quit")

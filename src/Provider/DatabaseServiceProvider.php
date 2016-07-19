@@ -18,6 +18,7 @@ namespace Xuplau\Provider;
 use Silex\Application;
 use Silex\ServiceProviderInterface;
 use Xuplau\Database\User;
+use Xuplau\Database\Blacklist;
 
 /**
  * Provides database objects
@@ -41,6 +42,9 @@ class DatabaseServiceProvider implements ServiceProviderInterface
     {
         $application['user'] = function() use ($application) {
             return new User($application['dbs']['apidb'],'user');
+        };
+        $application['blacklist'] = function() use ($application) {
+            return new Blacklist($application['dbs']['apidb'],'blacklist');
         };
     }
 

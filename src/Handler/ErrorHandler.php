@@ -19,7 +19,6 @@ use Silex\Application;
 use Exception;
 use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Exceptions\ExceptionInterface;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Xuplau\Exception\UserFriendlyException;
 

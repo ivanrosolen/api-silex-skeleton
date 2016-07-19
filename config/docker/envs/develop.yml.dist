@@ -5,11 +5,15 @@ services:
     volumes:
       - ./logs/php:/var/log/api-silex-skeleton/php
 
-  environment:
-    API_URL: 'http://docker.dev'
+    environment:
+      API_URL: 'http://docker.dev'
 
-    # APIPDB
-    APIPDB_HOST:     'apidb'
-    APIPDB_DBNAME:   'api'
-    APIPDB_USER:     'api'
-    APIPDB_PASSWORD: 'api'
+      # APIPDB
+      APIPDB_HOST:     'apidb'
+      APIPDB_DBNAME:   'api'
+      APIPDB_USER:     'api'
+      APIPDB_PASSWORD: 'api'
+
+      AUTH_ISSUER:   'http://docker.dev'
+      AUTH_AUDIENCE: 'http://docker.dev'
+      AUTH_KEY:      'Xuplau'

@@ -66,10 +66,10 @@ class FindByKeySql
         $keyValue
     ) {
         $this->connection = $connection;
-        $this->tableName = $tableName;
-        $this->columns = $columns;
-        $this->keyName = $keyName;
-        $this->keyValue = $keyValue;
+        $this->tableName  = $tableName;
+        $this->columns    = $columns;
+        $this->keyName    = $keyName;
+        $this->keyValue   = $keyValue;
     }
 
     /**

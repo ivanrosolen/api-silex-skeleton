@@ -1,0 +1,76 @@
+<?php
+/**
+ * This file is part of api silex skeleton
+ *
+ * PHP version 7
+ *
+ * @category  PHP
+ * @package   Xuplau
+ * @author    Ivan Rosolen <ivanrosolen@gmail.com>
+ * @author    William Espindola <oi@williamespindola.com.br>
+ * @copyright 2016 Xuplau
+ * @license   MIT
+ * @link      https://github.com/ivanrosolen/api-silex-skeleton
+ */
+
+namespace Xuplau\Resources\Auth;
+
+use Silex\Application;
+use Symfony\Component\HttpFoundation\Request;
+use Xuplau\Resources\Auth\Check;
+
+/**
+ * Resource that validate if request need to have jwt
+ *
+ * @version 1.0.0
+ *
+ * @package Xuplau\Resources\Auth
+ * @author  Ivan Rosolen <ivanrosolen@gmail.com>
+ * @author  William Espindola <oi@williamespindola.com.br>
+ */
+class RequestValidator
+{
+    /**
+     * Invokes route
+     *
+     * @param Application $application Application instance
+     * @param Request $request Request instance
+     * @param String $id Id of product
+     * @return Array Json with product
+     */
+    public function __invoke(Request $request, Application $application)
+    {
+
+        $uri = $request->getRequestUri();
+
+        preg_match('/^(\/login|\/logout|\/$)/', $uri, $matches);
+
+        if(count($matches) > 0) return;
+
+        //todo: if logout save on blacklist
+
+        $token = str_replace('Bearer ', '', $request->headers->get('Authorization'));
+
+        if (!$token)
+            return $application->json('Expectation Failed',417);
+
+        $check     = new Check($application['auth'], $token);
+        $blacklist = new Blacklist($application, $token);
+
+        if (!$check->verify()) {
+            $blacklist->save();
+            return $application->json('Forbidden',403);
+        }
+
+        if($blacklist->check()) {
+            return $application->json('Forbidden',403);
+        }
+
+        if (!$check->validate()) {
+            return $application->json('Expired',412);
+        }
+
+        // todo: check is user is active
+
+    }
+}

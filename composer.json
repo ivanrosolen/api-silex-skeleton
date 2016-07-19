@@ -7,7 +7,8 @@
         "silex/silex": "~1.3",
         "doctrine/dbal": "v2.5.4",
         "lcobucci/jwt":"~3.1",
-        "respect/validation": "1.0.4"
+        "respect/validation": "1.0.4",
+        "ramsey/uuid": "~3.4"
     },
     "require-dev": {
         "phpunit/phpunit" : "5.3.*",

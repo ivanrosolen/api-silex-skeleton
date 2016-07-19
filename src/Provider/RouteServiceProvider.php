@@ -17,11 +17,16 @@ namespace Xuplau\Provider;
 
 use Silex\Application;
 use Silex\ServiceProviderInterface;
+use Xuplau\Resources\Auth\RequestValidator as AuthRequestValidator;
+use Xuplau\Resources\Auth\Renew            as AuthRenew;
 use Xuplau\Resources\Index;
 use Xuplau\Resources\User\Create   as UserCreate;
 use Xuplau\Resources\User\Retrieve as UserRetrieve;
 use Xuplau\Resources\User\Update   as UserUpdate;
 use Xuplau\Resources\User\Delete   as UserDelete;
+use Xuplau\Resources\User\Login    as UserLogin;
+use Xuplau\Resources\User\Logout   as UserLogout;
+
 
 /**
  * Serivice to provide all routes for the application
@@ -46,10 +51,17 @@ class RouteServiceProvider implements ServiceProviderInterface
         $application->get('/', new Index());
 
         $application->post('/user',        new UserCreate);
-        $application->put('/user/{id}',    new UserUpdate);
-        $application->delete('/user/{id}', new UserDelete);
+        //$application->put('/user/{id}',    new UserUpdate);
+        //$application->delete('/user/{id}', new UserDelete);
         $application->get('/users',        new UserRetrieve);
         $application->get('/users/{page}', new UserRetrieve); // pagination
+
+        $application->post('/login', new UserLogin);
+        $application->get('/logout', new UserLogout);
+
+        $application->post('/renew', new AuthRenew);
+
+        $application->before(new AuthRequestValidator);
     }
 
     /**

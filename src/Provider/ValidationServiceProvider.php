@@ -19,6 +19,7 @@ use Silex\Application;
 use Silex\ServiceProviderInterface;
 use Xuplau\Validation\Rules\UserInput;
 use Xuplau\Validation\Rules\LoginInput;
+use Xuplau\Validation\Rules\AuthRenewInput;
 
 /**
  * Serivice to provide all validators for the application
@@ -41,10 +42,13 @@ class ValidationServiceProvider implements ServiceProviderInterface
     public function register(Application $application)
     {
         $application['user.validator'] = function() use ($application) {
-            return new UserInput();
+            return new UserInput;
         };
         $application['login.validator'] = function() use ($application) {
-            return new LoginInput();
+            return new LoginInput;
+        };
+        $application['renew_token.validator'] = function() use ($application) {
+            return new AuthRenewInput;
         };
     }
 

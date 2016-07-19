@@ -35,8 +35,6 @@ class Login
      *
      * @param Application $application Application instance
      * @param Request $request Request instance
-     * @param String $id Id of product
-     * @return Array Json with product
      */
     public function __invoke(Application $application, Request $request)
     {
@@ -53,10 +51,10 @@ class Login
         $auth  = new AuthCreate($application['auth'],$user['hash']);
         $token = $auth->create();
 
-        return $application->json(['jwt'   => $token['jwt'],
-                                   'renew' => $token['renew'],
-                                   'name'  => $user['name'],
-                                   'email' => $user['email'],
-                                   'hash'  => $user['hash']]);
+        return $application->json(['jwt'         => $token['jwt'],
+                                   'renew_token' => $token['renew_token'],
+                                   'name'        => $user['name'],
+                                   'email'       => $user['email'],
+                                   'hash'        => $user['hash']]);
     }
 }

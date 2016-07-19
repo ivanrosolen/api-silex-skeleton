@@ -51,7 +51,7 @@ class Create
 
         // colocar rmm4 links
 
-        return $application->json($users);
+        return $application->json($users,201);
 
     }
 }

@@ -66,12 +66,12 @@ class Create
                          ->setIssuedAt(time())
                          ->setNotBefore(time() - 1)
                          ->setExpiration(time() + $this->settings['expiration'])
-                         ->set('renew', $this->renew)
-                         ->set('hash',  $this->userHash)
+                         ->set('renew_token', $this->renew)
+                         ->set('hash',        $this->userHash)
                          ->sign($signer, $this->settings['key'])
                          ->getToken();
 
-        return ['jwt' => (string) $token, 'renew' => $this->renew ];
+        return ['jwt' => (string) $token, 'renew_token' => $this->renew ];
     }
 
     /**

@@ -34,8 +34,6 @@ class Retrieve
      *
      * @param Application $application Application instance
      * @param Request $request Request instance
-     * @param String $id Id of product
-     * @return Array Json with product
      */
     public function __invoke(
         Application $application,

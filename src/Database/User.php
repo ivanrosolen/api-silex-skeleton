@@ -35,7 +35,7 @@ class User
 
         $queryBuilder = $this->connection->createQueryBuilder();
         $result = $queryBuilder
-                    ->select('name,email')
+                    ->select('uuid as hash,name,email')
                     ->from($this->tableName)
                     ->setFirstResult($offset)
                     ->setMaxResults($limit)

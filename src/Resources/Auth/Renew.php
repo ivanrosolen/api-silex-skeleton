@@ -18,9 +18,11 @@ namespace Xuplau\Resources\Auth;
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
 use Xuplau\Resources\Auth\Create as AuthCreate;
+use Xuplau\Resources\Auth\Check  as AuthCheck;
+use Lcobucci\JWT\Parser;
 
 /**
- * Resource that list users
+ * Resource that renew a token
  *
  * @version 1.0.0
  *
@@ -35,13 +37,37 @@ class Renew
      *
      * @param Application $application Application instance
      * @param Request $request Request instance
-     * @param String $id Id of product
-     * @return Array Json with product
      */
     public function __invoke(Application $application, Request $request)
     {
 
+        $uri = $request->getRequestUri();
 
+        $token = str_replace('Bearer ', '', $request->headers->get('Authorization'));
+
+        if (!$token)
+            return $application->json('Expectation Failed',417);
+
+        $check = new AuthCheck($application['auth'], $token);
+
+        if (!$check->verify())
+            return $application->json('Forbidden',403);
+
+        $postData = $request->request->all();
+        $application['renew_token.validator']->assert($postData);
+
+        $parser = new Parser;
+        $jwt    = $parser->parse($token);
+        $renew  = $jwt->getClaim('renew_token');
+        $hash   = $jwt->getClaim('hash');
+
+        if ($renew != $postData['renew_token'])
+            return $application->json('Forbidden',403);
+
+        $auth  = new AuthCreate($application['auth'],$hash);
+        $token = $auth->create();
+
+        return $application->json($token,201);
 
     }
 }

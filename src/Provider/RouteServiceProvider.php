@@ -55,10 +55,9 @@ class RouteServiceProvider implements ServiceProviderInterface
         $application->get('/users',        new UserRetrieve);
         $application->get('/users/{page}', new UserRetrieve); // pagination
 
-        $application->post('/login', new AuthLogin);
-        $application->get('/logout', new AuthLogout);
-
-        $application->post('/renew', new AuthRenew);
+        $application->post('/auth/login', new AuthLogin);
+        $application->get('/auth/logout', new AuthLogout);
+        $application->post('/auth/renew', new AuthRenew);
 
         $application->before(new AuthRequestValidator);
     }

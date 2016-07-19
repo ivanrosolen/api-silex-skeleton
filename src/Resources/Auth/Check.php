@@ -53,7 +53,7 @@ class Check
 
         $this->token    = $parser->parse($token);
         $this->userHash = $this->token->getClaim('hash');
-        $this->renew    = $this->token->getClaim('renew');
+        $this->renew    = $this->token->getClaim('renew_token');
         $this->id       = $this->createId();
     }
 

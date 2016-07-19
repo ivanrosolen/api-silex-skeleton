@@ -33,17 +33,15 @@ class RequestValidator
     /**
      * Invokes route
      *
-     * @param Application $application Application instance
      * @param Request $request Request instance
-     * @param String $id Id of product
-     * @return Array Json with product
+     * @param Application $application Application instance
      */
     public function __invoke(Request $request, Application $application)
     {
 
         $uri = $request->getRequestUri();
 
-        preg_match('/^(\/login|\/logout|\/$)/', $uri, $matches);
+        preg_match('/^(\/auth.+|\/$)/', $uri, $matches);
 
         if(count($matches) > 0) return;
 

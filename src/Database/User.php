@@ -21,6 +21,9 @@ use Xuplau\Database\Sql\FindByKeySql;
 
 class User
 {
+
+    const ACTIVE    = 1;
+    const INACTIVE  = 2;
     private $connection;
     private $tableName;
 
@@ -37,8 +40,10 @@ class User
         $result = $queryBuilder
                     ->select('uuid as hash,name,email')
                     ->from($this->tableName)
+                    ->where('status = :status')
                     ->setFirstResult($offset)
                     ->setMaxResults($limit)
+                    ->setParameter(':status', self::ACTIVE)
                     ->execute()
                     ->fetchAll();
 

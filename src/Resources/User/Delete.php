@@ -34,11 +34,23 @@ class Delete
      *
      * @param Application $application Application instance
      * @param Request $request Request instance
-     * @param String $status Status of jobs
+     * @param String $hash User uuid
      * @return Array Json
      */
-    public function __invoke(Application $application, Request $request, $id)
+    public function __invoke(Application $application, Request $request, $hash)
     {
-        return true;
+
+        $data['uuid'] = $hash;
+
+        $application['user_delete.validator']->assert($data);
+
+        $user = $application['user']->delete($data);
+
+        if (!$user)
+            return $application->json('', 404);
+
+        // colocar rmm4 links
+
+        return $application->json('',200);
     }
 }

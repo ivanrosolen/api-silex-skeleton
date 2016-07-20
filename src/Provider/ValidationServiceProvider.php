@@ -17,7 +17,9 @@ namespace Xuplau\Provider;
 
 use Silex\Application;
 use Silex\ServiceProviderInterface;
-use Xuplau\Validation\Rules\UserInput;
+use Xuplau\Validation\Rules\UserCreateInput;
+use Xuplau\Validation\Rules\UserUpdateInput;
+use Xuplau\Validation\Rules\UserDeleteInput;
 use Xuplau\Validation\Rules\LoginInput;
 use Xuplau\Validation\Rules\AuthRenewInput;
 
@@ -41,8 +43,14 @@ class ValidationServiceProvider implements ServiceProviderInterface
      */
     public function register(Application $application)
     {
-        $application['user.validator'] = function() use ($application) {
-            return new UserInput;
+        $application['user_create.validator'] = function() use ($application) {
+            return new UserCreateInput;
+        };
+        $application['user_update.validator'] = function() use ($application) {
+            return new UserUpdateInput;
+        };
+        $application['user_delete.validator'] = function() use ($application) {
+            return new UserDeleteInput;
         };
         $application['login.validator'] = function() use ($application) {
             return new LoginInput;

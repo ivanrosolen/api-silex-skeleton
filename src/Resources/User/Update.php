@@ -34,11 +34,24 @@ class Update
      *
      * @param Application $application Application instance
      * @param Request $request Request instance
-     * @param String $status Status of jobs
+     * @param String $hash User uuid
      * @return Array Json
      */
-    public function __invoke(Application $application, Request $request, $id)
+    public function __invoke(Application $application, Request $request, $hash)
     {
-        return true;
+        $putData = $request->request->all();
+
+        $putData['uuid'] = $hash;
+
+        $application['user_update.validator']->assert($putData);
+
+        $user = $application['user']->update($putData);
+
+        if (!$user)
+            return $application->json('', 404);
+
+        // colocar rmm4 links
+
+        return $application->json($user,200);
     }
 }

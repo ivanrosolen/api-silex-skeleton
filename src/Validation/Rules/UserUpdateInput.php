@@ -24,19 +24,21 @@ use Respect\Validation\Rules;
  * @author  Ivan Rosolen <ivanrosolen@gmail.com>
  * @author  William Espindola <oi@williamespindola.com.br>
  */
-class UserInput extends Rules\AllOf
+class UserUpdateInput extends Rules\AllOf
 {
     public function __construct()
     {
         return $this->addRules([
 
-            new Rules\Key('name', new Rules\NoWhitespace(), true),
             new Rules\Key('name', new Rules\Length(2, 50, true), true),
 
             new Rules\Key('email', new Rules\Email(), true),
 
-            new Rules\Key('pwd', new Rules\NoWhitespace(), true),
-            new Rules\Key('pwd', new Rules\Length(5,null, true), true)
+            new Rules\Key('pwd', new Rules\NoWhitespace(), false),
+            new Rules\Key('pwd', new Rules\Length(5,null, true), false),
+
+            new Rules\Key('uuid', new Rules\NoWhitespace(), true),
+            new Rules\Key('uuid', new Rules\Length(10, null, true), true)
         ]);
     }
 }

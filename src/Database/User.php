@@ -24,6 +24,7 @@ class User
 
     const ACTIVE    = 1;
     const INACTIVE  = 2;
+    const DELETED   = 3;
     private $connection;
     private $tableName;
 
@@ -57,7 +58,7 @@ class User
         $postData['pwd'] = hash('sha256',$postData['pwd']);
 
         $postData['uuid']    = (string) Uuid::uuid4();
-        $postData['status']  = '1';
+        $postData['status']  = self::ACTIVE;
         $postData['created'] = date('Y-m-d H:i:s');
 
         $names = ['name'    =>':name',
@@ -86,6 +87,65 @@ class User
                                  $id);
 
         return $user->execute()[0];
+    }
+
+    public function update(Array $putData)
+    {
+
+        $names = ['name'  =>':name',
+                  'email' =>':email'];
+
+        if ( isset($putData['pwd']) && !empty($putData['pwd'])) {
+            // encrypt password
+            $putData['pwd'] = hash('sha256',$putData['pwd']);
+            $names['pwd']   = ':pwd';
+        }
+
+        $names['uuid'] = ':uuid';
+
+        $queryBuilder = $this->connection->createQueryBuilder();
+        $query        = $queryBuilder->update($this->tableName)
+                                     ->where('uuid = :uuid');
+
+        foreach ($names as $key => $value) {
+            $query->set($key,$value);
+        }
+        foreach ($putData as $key => $value) {
+            $query->setParameter(':'.$key,$value);
+        }
+
+        if (!$query->execute()) return false;
+
+        $user = new FindByKeySql($this->connection,
+                                 $this->tableName,
+                                 array('uuid as hash','name','email'),
+                                 'uuid',
+                                 $putData['uuid']);
+
+        return $user->execute()[0];
+
+    }
+
+    public function delete($data)
+    {
+
+        $data['status'] = self::DELETED;
+
+        $names = ['uuid'   =>':uuid',
+                  'status' =>':status'];
+
+        $queryBuilder = $this->connection->createQueryBuilder();
+        $query        = $queryBuilder->update($this->tableName)
+                                     ->where('uuid = :uuid');
+
+        foreach ($names as $key => $value) {
+            $query->set($key,$value);
+        }
+        foreach ($data as $key => $value) {
+            $query->setParameter(':'.$key,$value);
+        }
+
+        return (bool) $query->execute();
     }
 
     public function login(Array $postData)

@@ -49,11 +49,11 @@ class RouteServiceProvider implements ServiceProviderInterface
     {
         $application->get('/', new Index());
 
-        $application->post('/user',        new UserCreate);
-        $application->put('/user/{id}',    new UserUpdate);
-        $application->delete('/user/{id}', new UserDelete);
-        $application->get('/users',        new UserRetrieve);
-        $application->get('/users/{page}', new UserRetrieve); // pagination
+        $application->post('/user',          new UserCreate);
+        $application->put('/user/{hash}',    new UserUpdate);
+        $application->delete('/user/{hash}', new UserDelete);
+        $application->get('/users',          new UserRetrieve);
+        $application->get('/users/{page}',   new UserRetrieve); // pagination
 
         $application->post('/auth/login', new AuthLogin);
         $application->get('/auth/logout', new AuthLogout);

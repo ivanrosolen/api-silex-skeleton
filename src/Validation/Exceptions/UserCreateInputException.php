@@ -24,6 +24,6 @@ use Respect\Validation\Exceptions\AllOfException;
  * @author  Ivan Rosolen <ivanrosolen@gmail.com>
  * @author  William Espindola <oi@williamespindola.com.br>
  */
-class UserInputException extends AllOfException
+class UserCreateInputException extends AllOfException
 {
 }

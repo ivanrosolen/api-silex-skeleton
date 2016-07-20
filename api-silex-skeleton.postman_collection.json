@@ -1,0 +1,229 @@
+{
+	"variables": [],
+	"info": {
+		"name": "api-silex-skeleton",
+		"_postman_id": "fbb3b302-879e-19a4-8b37-255a4941374c",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "auth/login",
+			"request": {
+				"url": "http://docker.dev/auth/login",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "xuplau@arizona.com.br",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "pwd",
+							"value": "1da28ba1697eef016923229f3b8de489",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "auth/logout",
+			"request": {
+				"url": "http://docker.dev/auth/logout",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImp0aSI6ImM5Y2IxYzAwYTc1YjAwOTMxYzlmMGEyMGFiMDQ0YzRjNGRmZTFhM2RlYTNkOGU3N2YzYWM2MTk1OGM1NzBlOWEifQ.eyJpc3MiOiJodHRwOlwvXC9kb2NrZXIuZGV2IiwiYXVkIjoiaHR0cDpcL1wvZG9ja2VyLmRldiIsImp0aSI6ImM5Y2IxYzAwYTc1YjAwOTMxYzlmMGEyMGFiMDQ0YzRjNGRmZTFhM2RlYTNkOGU3N2YzYWM2MTk1OGM1NzBlOWEiLCJpYXQiOjE0NjkwNDA0OTUsIm5iZiI6MTQ2OTA0MDQ5NCwiZXhwIjoxNDY5MDQ0MDk1LCJyZW5ld190b2tlbiI6IjRmYWQ3M2M1NzFiZmVjMGYwZjExODFjMGRlZTU1YjMxIiwiaGFzaCI6ImQ3ZDE2NTMxLTYyOGItNDZmZC1iMmI5LWVkZjM3MzJjM2EyYyJ9.5Jm21RP11FOVEQxeFXpt8M4aNti4nYXBWfUjQICtOLo",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "retrieve users",
+			"request": {
+				"url": "http://docker.dev/users/1",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImp0aSI6ImMxMDc2ZDZlNjBkNzU5ZDk4ZGQ2NjA5MDE2ZDY0NzdhN2UxZjJlNTAyMzY1MmM4ZmU0ZmY5Mjg1OTVhNWRjYTAifQ.eyJpc3MiOiJodHRwOlwvXC9kb2NrZXIuZGV2IiwiYXVkIjoiaHR0cDpcL1wvZG9ja2VyLmRldiIsImp0aSI6ImMxMDc2ZDZlNjBkNzU5ZDk4ZGQ2NjA5MDE2ZDY0NzdhN2UxZjJlNTAyMzY1MmM4ZmU0ZmY5Mjg1OTVhNWRjYTAiLCJpYXQiOjE0NjkwNDA3MDAsIm5iZiI6MTQ2OTA0MDY5OSwiZXhwIjoxNDY5MDQ0MzAwLCJyZW5ld190b2tlbiI6Ijk3YTA3NWZiZTU3ODcwZjkyOWUzNzVjNzQ1NGFhNjRkIiwiaGFzaCI6ImQ3ZDE2NTMxLTYyOGItNDZmZC1iMmI5LWVkZjM3MzJjM2EyYyJ9.sQ1VvrGjsAvaZuxJweYmWV0Yske9unhbTotMxBYwBGE",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "retrieve  users pagination",
+			"request": {
+				"url": "http://docker.dev/users/1",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImp0aSI6ImMxMDc2ZDZlNjBkNzU5ZDk4ZGQ2NjA5MDE2ZDY0NzdhN2UxZjJlNTAyMzY1MmM4ZmU0ZmY5Mjg1OTVhNWRjYTAifQ.eyJpc3MiOiJodHRwOlwvXC9kb2NrZXIuZGV2IiwiYXVkIjoiaHR0cDpcL1wvZG9ja2VyLmRldiIsImp0aSI6ImMxMDc2ZDZlNjBkNzU5ZDk4ZGQ2NjA5MDE2ZDY0NzdhN2UxZjJlNTAyMzY1MmM4ZmU0ZmY5Mjg1OTVhNWRjYTAiLCJpYXQiOjE0NjkwNDA3MDAsIm5iZiI6MTQ2OTA0MDY5OSwiZXhwIjoxNDY5MDQ0MzAwLCJyZW5ld190b2tlbiI6Ijk3YTA3NWZiZTU3ODcwZjkyOWUzNzVjNzQ1NGFhNjRkIiwiaGFzaCI6ImQ3ZDE2NTMxLTYyOGItNDZmZC1iMmI5LWVkZjM3MzJjM2EyYyJ9.sQ1VvrGjsAvaZuxJweYmWV0Yske9unhbTotMxBYwBGE",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "create user",
+			"request": {
+				"url": "http://docker.dev/user",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImp0aSI6ImMxMDc2ZDZlNjBkNzU5ZDk4ZGQ2NjA5MDE2ZDY0NzdhN2UxZjJlNTAyMzY1MmM4ZmU0ZmY5Mjg1OTVhNWRjYTAifQ.eyJpc3MiOiJodHRwOlwvXC9kb2NrZXIuZGV2IiwiYXVkIjoiaHR0cDpcL1wvZG9ja2VyLmRldiIsImp0aSI6ImMxMDc2ZDZlNjBkNzU5ZDk4ZGQ2NjA5MDE2ZDY0NzdhN2UxZjJlNTAyMzY1MmM4ZmU0ZmY5Mjg1OTVhNWRjYTAiLCJpYXQiOjE0NjkwNDA3MDAsIm5iZiI6MTQ2OTA0MDY5OSwiZXhwIjoxNDY5MDQ0MzAwLCJyZW5ld190b2tlbiI6Ijk3YTA3NWZiZTU3ODcwZjkyOWUzNzVjNzQ1NGFhNjRkIiwiaGFzaCI6ImQ3ZDE2NTMxLTYyOGItNDZmZC1iMmI5LWVkZjM3MzJjM2EyYyJ9.sQ1VvrGjsAvaZuxJweYmWV0Yske9unhbTotMxBYwBGE",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Ivan Rosolen",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "email",
+							"value": "ivan@arizona.com.br",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "pwd",
+							"value": "1da28ba1697eef016923229f3b8de489",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "update user",
+			"request": {
+				"url": "http://docker.dev/user/59676425-f5b8-48c1-9b2a-daf4eb472c5e",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImp0aSI6ImMxMDc2ZDZlNjBkNzU5ZDk4ZGQ2NjA5MDE2ZDY0NzdhN2UxZjJlNTAyMzY1MmM4ZmU0ZmY5Mjg1OTVhNWRjYTAifQ.eyJpc3MiOiJodHRwOlwvXC9kb2NrZXIuZGV2IiwiYXVkIjoiaHR0cDpcL1wvZG9ja2VyLmRldiIsImp0aSI6ImMxMDc2ZDZlNjBkNzU5ZDk4ZGQ2NjA5MDE2ZDY0NzdhN2UxZjJlNTAyMzY1MmM4ZmU0ZmY5Mjg1OTVhNWRjYTAiLCJpYXQiOjE0NjkwNDA3MDAsIm5iZiI6MTQ2OTA0MDY5OSwiZXhwIjoxNDY5MDQ0MzAwLCJyZW5ld190b2tlbiI6Ijk3YTA3NWZiZTU3ODcwZjkyOWUzNzVjNzQ1NGFhNjRkIiwiaGFzaCI6ImQ3ZDE2NTMxLTYyOGItNDZmZC1iMmI5LWVkZjM3MzJjM2EyYyJ9.sQ1VvrGjsAvaZuxJweYmWV0Yske9unhbTotMxBYwBGE",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Ivan1 Rosolen",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "email",
+							"value": "iva1n@arizona.com.br",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "update user pwd",
+			"request": {
+				"url": "http://docker.dev/user/c3bc1025-8246-4bb7-b437-53889c1a14d0",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImp0aSI6ImMxMDc2ZDZlNjBkNzU5ZDk4ZGQ2NjA5MDE2ZDY0NzdhN2UxZjJlNTAyMzY1MmM4ZmU0ZmY5Mjg1OTVhNWRjYTAifQ.eyJpc3MiOiJodHRwOlwvXC9kb2NrZXIuZGV2IiwiYXVkIjoiaHR0cDpcL1wvZG9ja2VyLmRldiIsImp0aSI6ImMxMDc2ZDZlNjBkNzU5ZDk4ZGQ2NjA5MDE2ZDY0NzdhN2UxZjJlNTAyMzY1MmM4ZmU0ZmY5Mjg1OTVhNWRjYTAiLCJpYXQiOjE0NjkwNDA3MDAsIm5iZiI6MTQ2OTA0MDY5OSwiZXhwIjoxNDY5MDQ0MzAwLCJyZW5ld190b2tlbiI6Ijk3YTA3NWZiZTU3ODcwZjkyOWUzNzVjNzQ1NGFhNjRkIiwiaGFzaCI6ImQ3ZDE2NTMxLTYyOGItNDZmZC1iMmI5LWVkZjM3MzJjM2EyYyJ9.sQ1VvrGjsAvaZuxJweYmWV0Yske9unhbTotMxBYwBGE",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Ivan Rosolen2",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "email",
+							"value": "ivan@arizona.com.br",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "pwd",
+							"value": "2da28b1a1697eef016923229f3b8de489",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "delete use",
+			"request": {
+				"url": "http://docker.dev/user/c3bc1025-8246-4bb7-b437-53889c1a14d0",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImp0aSI6ImMxMDc2ZDZlNjBkNzU5ZDk4ZGQ2NjA5MDE2ZDY0NzdhN2UxZjJlNTAyMzY1MmM4ZmU0ZmY5Mjg1OTVhNWRjYTAifQ.eyJpc3MiOiJodHRwOlwvXC9kb2NrZXIuZGV2IiwiYXVkIjoiaHR0cDpcL1wvZG9ja2VyLmRldiIsImp0aSI6ImMxMDc2ZDZlNjBkNzU5ZDk4ZGQ2NjA5MDE2ZDY0NzdhN2UxZjJlNTAyMzY1MmM4ZmU0ZmY5Mjg1OTVhNWRjYTAiLCJpYXQiOjE0NjkwNDA3MDAsIm5iZiI6MTQ2OTA0MDY5OSwiZXhwIjoxNDY5MDQ0MzAwLCJyZW5ld190b2tlbiI6Ijk3YTA3NWZiZTU3ODcwZjkyOWUzNzVjNzQ1NGFhNjRkIiwiaGFzaCI6ImQ3ZDE2NTMxLTYyOGItNDZmZC1iMmI5LWVkZjM3MzJjM2EyYyJ9.sQ1VvrGjsAvaZuxJweYmWV0Yske9unhbTotMxBYwBGE",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

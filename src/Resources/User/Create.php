@@ -34,7 +34,6 @@ class Create
      *
      * @param Application $application Application instance
      * @param Request     $request Request instance
-     * @param String      $status Status of jobs
      * @return Array Json
      */
     public function __invoke(Application $application, Request $request)
@@ -42,16 +41,16 @@ class Create
 
         $postData = $request->request->all();
 
-        $application['user.validator']->assert($postData);
+        $application['user_create.validator']->assert($postData);
 
-        $users = $application['user']->create($postData);
+        $user = $application['user']->create($postData);
 
-        if (!$users)
+        if (!$user)
             return $application->json('', 404);
 
         // colocar rmm4 links
 
-        return $application->json($users,201);
+        return $application->json($user,201);
 
     }
 }

@@ -1,9 +1,10 @@
 # API Silex Skeleton
 
+Skeleton using [Silex](http://silex.sensiolabs.org) and [Json Web Token](http://jwt.io) to create a RESTFull API
+
 ## Install
 
-With Docker and Composer installed in your system just run the following
-command on project root:
+With Docker and Composer installed in your system just run the following command on project root:
 
 ```bash
 ./bin/minion
@@ -13,6 +14,8 @@ command on project root:
 ```
 
 ## Usage
+
+Import [Postman](api-silex-skeleton.postman_collection.json) Collection
 
 ### Minion (shell task manager)
 

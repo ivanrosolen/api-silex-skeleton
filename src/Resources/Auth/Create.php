@@ -67,7 +67,7 @@ class Create
                          ->setNotBefore(time() - 1)
                          ->setExpiration(time() + $this->settings['expiration'])
                          ->set('renew_token', $this->renew)
-                         ->set('hash',        $this->userHash)
+                         ->set('hash', $this->userHash)
                          ->sign($signer, $this->settings['key'])
                          ->getToken();
 

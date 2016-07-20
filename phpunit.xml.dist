@@ -27,6 +27,6 @@
         <log type="coverage-clover" target="build/logs/clover.xml"/>
     </logging>
     <php>
-        <env name="DOMAIN" value="http://192.168.99.100:8080"/>
+        <env name="DOMAIN" value="http://docker.dev"/>
     </php>
 </phpunit>

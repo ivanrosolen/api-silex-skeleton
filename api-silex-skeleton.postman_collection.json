@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "api-silex-skeleton",
-		"_postman_id": "fbb3b302-879e-19a4-8b37-255a4941374c",
+		"_postman_id": "cd119e87-df81-e0bf-a79f-4af2e9656326",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -220,6 +220,26 @@
 				"body": {
 					"mode": "urlencoded",
 					"urlencoded": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "API",
+			"request": {
+				"url": "http://docker.dev/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImp0aSI6ImM5Y2IxYzAwYTc1YjAwOTMxYzlmMGEyMGFiMDQ0YzRjNGRmZTFhM2RlYTNkOGU3N2YzYWM2MTk1OGM1NzBlOWEifQ.eyJpc3MiOiJodHRwOlwvXC9kb2NrZXIuZGV2IiwiYXVkIjoiaHR0cDpcL1wvZG9ja2VyLmRldiIsImp0aSI6ImM5Y2IxYzAwYTc1YjAwOTMxYzlmMGEyMGFiMDQ0YzRjNGRmZTFhM2RlYTNkOGU3N2YzYWM2MTk1OGM1NzBlOWEiLCJpYXQiOjE0NjkwNDA0OTUsIm5iZiI6MTQ2OTA0MDQ5NCwiZXhwIjoxNDY5MDQ0MDk1LCJyZW5ld190b2tlbiI6IjRmYWQ3M2M1NzFiZmVjMGYwZjExODFjMGRlZTU1YjMxIiwiaGFzaCI6ImQ3ZDE2NTMxLTYyOGItNDZmZC1iMmI5LWVkZjM3MzJjM2EyYyJ9.5Jm21RP11FOVEQxeFXpt8M4aNti4nYXBWfUjQICtOLo",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
 				},
 				"description": ""
 			},

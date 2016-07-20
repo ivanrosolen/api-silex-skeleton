@@ -16,7 +16,7 @@ services:
       - php
 
   php:
-    image: arizona/php7-fpm-imagemagick:stable
+    image: sacredskull/php-7-fpm-development
     volumes:
       # php files
       - .:/var/www/html/

@@ -15,6 +15,8 @@ With Docker and Composer installed in your system just run the following command
 
 ## Usage
 
+### Postman
+
 Import [Postman](api-silex-skeleton.postman_collection.json) Collection
 
 ### Minion (shell task manager)

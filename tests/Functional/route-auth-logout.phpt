@@ -25,7 +25,3 @@ echo $response->getStatusCode()."\n";
 ?>
 --EXPECT--
 200
---CLEAN--
-<?php
-$conn = null;
-?>

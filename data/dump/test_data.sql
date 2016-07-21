@@ -23,7 +23,8 @@ VALUES
   (18,'Xuplau17','xuplau17@gmail.com','f51fe57f99d541ed94ad38befd5b603a70a3a3a396813cab6144b451428fbfe5','1087a002-a998-4513-921b-072996ce2f3e',1,'2016-07-21 16:21:37'),
   (19,'Xuplau18','xuplau18@gmail.com','f51fe57f99d541ed94ad38befd5b603a70a3a3a396813cab6144b451428fbfe5','cc2887fc-598b-4c6e-8305-70f51cad01b9',1,'2016-07-21 16:21:40'),
   (20,'Xuplau19','xuplau19@gmail.com','f51fe57f99d541ed94ad38befd5b603a70a3a3a396813cab6144b451428fbfe5','ed3fb045-404a-4610-8859-a1daa7c3e019',1,'2016-07-21 16:21:46'),
-  (21,'Xuplau20','xuplau20@gmail.com','f51fe57f99d541ed94ad38befd5b603a70a3a3a396813cab6144b451428fbfe5','c877f6b7-4e5f-4b53-97ba-92b7c4ab56e4',1,'2016-07-21 16:21:49');
+  (21,'Xuplau20','xuplau20@gmail.com','f51fe57f99d541ed94ad38befd5b603a70a3a3a396813cab6144b451428fbfe5','c877f6b7-4e5f-4b53-97ba-92b7c4ab56e4',1,'2016-07-21 16:21:49'),
+  (22,'Xuplau21','xuplau21@gmail.com','f51fe57f99d541ed94ad38befd5b603a70a3a3a396813cab6144b451428fbfe5','c877f6b7-4e5f-4b53-97ba-92b7c4ab58e4',1,'2016-07-21 16:21:49');
 
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;

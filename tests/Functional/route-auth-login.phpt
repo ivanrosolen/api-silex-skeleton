@@ -27,7 +27,3 @@ echo json_encode($json);
 --EXPECT--
 200
 {"jwt":"%s.%s.%s","renew_token":"%s","name":"Xuplau","email":"xuplau@gmail.com","hash":"092227be-8d61-49c1-9bea-04f977af0f01"}
---CLEAN--
-<?php
-$conn = null;
-?>

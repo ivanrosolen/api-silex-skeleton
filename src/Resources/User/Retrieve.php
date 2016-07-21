@@ -44,9 +44,8 @@ class Retrieve
         $qtd    = $application['apipagelimit'];
         $page   = (!empty((int)$page)) ? $page : 1;
         $offset = ($page == 1) ? '0' : ($page*$qtd)-$qtd;
-        $limit  = 10;
 
-        $users = $application['user']->fetchAll($limit, $offset);
+        $users = $application['user']->fetchAll($qtd, $offset);
 
         if (!$users)
             return $application->json('', 404);

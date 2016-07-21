@@ -18,7 +18,3 @@ echo $response->getBody();
 --EXPECT--
 200
 {"description":"RESTfull API using Silex and JWT","version":"1.0.0"}
---CLEAN--
-<?php
-$conn = null;
-?>

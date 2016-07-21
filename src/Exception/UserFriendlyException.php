@@ -17,8 +17,8 @@ namespace Xuplau\Exception;
 
 class UserFriendlyException extends \Exception
 {
-    private $messageFormat;
-    private $messageParams = [];
+    protected $messageFormat;
+    protected $messageParams = [];
 
     public function __construct($messageFormat, array $messageParams = [], \Exception $previous = null, $code = 0)
     {

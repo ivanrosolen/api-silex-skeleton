@@ -25,13 +25,14 @@ class User
     const ACTIVE    = 1;
     const INACTIVE  = 2;
     const DELETED   = 3;
-    private $connection;
-    private $tableName;
 
-    public function __construct(Connection $connection, $tableName)
+    protected $connection;
+    protected $tableName;
+
+    public function __construct(Connection $connection)
     {
         $this->connection = $connection;
-        $this->tableName  = $tableName;
+        $this->tableName  = 'user';
     }
 
     public function fetchAll($limit, $offset)
@@ -42,13 +43,14 @@ class User
                     ->select('uuid as hash,name,email')
                     ->from($this->tableName)
                     ->where('status = :status')
-                    ->setFirstResult($offset)
-                    ->setMaxResults($limit)
-                    ->setParameter(':status', self::ACTIVE)
-                    ->execute()
-                    ->fetchAll();
+                    ->setParameter(':status', self::ACTIVE);
 
-        return $result;
+        if (!is_null($limit)) {
+            $result->setFirstResult($offset)
+                   ->setMaxResults($limit);
+        }
+
+        return $result->execute()->fetchAll();
     }
 
     public function create(Array $postData)

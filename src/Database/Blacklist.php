@@ -24,13 +24,13 @@ class Blacklist
     const LOGOUT = 1;
     const BLOCK  = 2;
 
-    private $connection;
-    private $tableName;
+    protected $connection;
+    protected $tableName;
 
-    public function __construct(Connection $connection, $tableName)
+    public function __construct(Connection $connection)
     {
         $this->connection = $connection;
-        $this->tableName  = $tableName;
+        $this->tableName  = 'blacklist';
     }
 
     public function fetch($token_id)

@@ -24,7 +24,7 @@ use Xuplau\Exception\UserFriendlyException;
 
 class ErrorHandler
 {
-    private $application;
+    protected $application;
 
     public function __construct(Application $application)
     {

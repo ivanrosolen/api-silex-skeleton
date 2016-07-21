@@ -1,8 +1,10 @@
 --TEST--
 Test index route
+--CREDITS--
+Ivan Rosolen <ivanrosolen [at] gmail [dot] com>
 --FILE--
 <?php
-require 'vendor/autoload.php';
+require_once 'vendor/autoload.php';
 
 $client = new GuzzleHttp\Client(['base_uri' => getenv('DOMAIN')]);
 

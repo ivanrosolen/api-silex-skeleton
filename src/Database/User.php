@@ -37,6 +37,7 @@ class User
     public function fetchAll($limit, $offset)
     {
 
+
         $queryBuilder = $this->connection->createQueryBuilder();
         $result = $queryBuilder
                     ->select('uuid as hash,name,email')

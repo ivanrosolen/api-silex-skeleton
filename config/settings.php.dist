@@ -14,7 +14,7 @@
  */
 
 return [
-    'debug' => true,
+    'debug'   => true,
     'version' => '1.0.0',
     'php' => [
         'date.timezone'           => 'America/Sao_Paulo',
@@ -22,7 +22,8 @@ return [
         'display_startup_errors'  => true,
         'error_reporting'         => E_ALL & ~E_NOTICE & ~E_DEPRECATED
     ],
-    'apiurl' => getenv('API_URL'),
+    'apipagelimit' => getenv('API_PAGE_LIMIT'),
+    'apiurl'       => getenv('API_URL'),
     'apidb' => [
         'host'      => getenv('APIPDB_HOST'),
         'dbname'    => getenv('APIPDB_DBNAME'),

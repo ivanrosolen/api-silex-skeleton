@@ -41,8 +41,9 @@ class Retrieve
         $page = null
     ) {
 
+        $qtd    = $application['apipagelimit'];
         $page   = (!empty((int)$page)) ? $page : 1;
-        $offset = ($page == 1) ? '0' : ($page*50)-50;
+        $offset = ($page == 1) ? '0' : ($page*$qtd)-$qtd;
         $limit  = 10;
 
         $users = $application['user']->fetchAll($limit, $offset);

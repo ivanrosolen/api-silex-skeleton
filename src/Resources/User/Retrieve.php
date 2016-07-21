@@ -45,13 +45,14 @@ class Retrieve
             $qtd    = $application['apipagelimit'];
             $page   = (!empty((int)$page)) ? $page : 1;
             $offset = ($page == 1) ? '0' : ($page*$qtd)-$qtd;
+
+            $users = $application['user']->fetchPage($qtd, $offset);
+            // colocar rmm4 links
+
+            return $application->json($users);
         }
 
         $users = $application['user']->fetchAll($qtd, $offset);
-
-        if (!$users)
-            return $application->json('', 404);
-
         // colocar rmm4 links
 
         return $application->json($users);

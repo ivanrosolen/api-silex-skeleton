@@ -35,7 +35,7 @@ class User
         $this->tableName  = 'user';
     }
 
-    public function fetchAll($limit, $offset)
+    public function fetchAll()
     {
 
         $queryBuilder = $this->connection->createQueryBuilder();
@@ -43,14 +43,28 @@ class User
                     ->select('uuid as hash,name,email')
                     ->from($this->tableName)
                     ->where('status = :status')
-                    ->setParameter(':status', self::ACTIVE);
+                    ->setParameter(':status', self::ACTIVE)
+                    ->execute()
+                    ->fetchAll();
 
-        if (!is_null($limit)) {
-            $result->setFirstResult($offset)
-                   ->setMaxResults($limit);
-        }
+        return $result;
+    }
 
-        return $result->execute()->fetchAll();
+    public function fetchPage($limit, $offset)
+    {
+
+        $queryBuilder = $this->connection->createQueryBuilder();
+        $result = $queryBuilder
+                    ->select('uuid as hash,name,email')
+                    ->from($this->tableName)
+                    ->where('status = :status')
+                    ->setParameter(':status', self::ACTIVE)
+                    ->setFirstResult($offset)
+                    ->setMaxResults($limit)
+                    ->execute()
+                    ->fetchAll();
+
+        return $result;
     }
 
     public function create(Array $postData)

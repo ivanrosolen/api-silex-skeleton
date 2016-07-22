@@ -1,5 +1,5 @@
 --TEST--
-Test update (PUT) user route
+Test update (PUT) user with password route
 --CREDITS--
 Ivan Rosolen <ivanrosolen [at] gmail [dot] com>
 --FILE--

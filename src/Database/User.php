@@ -17,7 +17,6 @@ namespace Xuplau\Database;
 
 use Doctrine\DBAL\Connection;
 use Ramsey\Uuid\Uuid;
-use Xuplau\Database\Sql\FindByKeySql;
 
 class User
 {
@@ -33,6 +32,26 @@ class User
     {
         $this->connection = $connection;
         $this->tableName  = 'user';
+    }
+
+    public function fetch($uuid)
+    {
+
+        $queryBuilder = $this->connection->createQueryBuilder();
+        $result = $queryBuilder
+                    ->select('uuid as hash,name,email')
+                    ->from($this->tableName)
+                    ->where(
+                        $queryBuilder->expr()->andX(
+                        $queryBuilder->expr()->eq('status', ':status'),
+                        $queryBuilder->expr()->eq('uuid', ':uuid')
+                    ))
+                    ->setParameter(':status', self::ACTIVE)
+                    ->setParameter(':uuid', $uuid)
+                    ->execute()
+                    ->fetch();
+
+        return $result;
     }
 
     public function fetchAll()
@@ -96,13 +115,9 @@ class User
 
         $id = $this->connection->lastInsertId();
 
-        $user = new FindByKeySql($this->connection,
-                                 $this->tableName,
-                                 array('uuid as hash','name','email'),
-                                 'id',
-                                 $id);
+        $user = $this->fetch($postData['uuid']);
 
-        return $user->execute()[0];
+        return $user;
     }
 
     public function update(Array $putData)
@@ -132,13 +147,9 @@ class User
 
         if (!$query->execute()) return false;
 
-        $user = new FindByKeySql($this->connection,
-                                 $this->tableName,
-                                 array('uuid as hash','name','email'),
-                                 'uuid',
-                                 $putData['uuid']);
+        $user = $this->fetch($putData['uuid']);
 
-        return $user->execute()[0];
+        return $user;
 
     }
 

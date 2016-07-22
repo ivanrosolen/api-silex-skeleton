@@ -1,5 +1,5 @@
 --TEST--
-Test delete user
+Test update user
 --CREDITS--
 Ivan Rosolen <ivanrosolen [at] gmail [dot] com>
 --FILE--
@@ -14,25 +14,34 @@ $conn   = \Doctrine\DBAL\DriverManager::getConnection($dsn, $config);
 
 $schema = new \Doctrine\DBAL\Schema\Schema();
 $userTable = $schema->createTable('user');
-$userTable->addColumn('uuid',    'string');
-$userTable->addColumn('status',  'integer');
+$userTable->addColumn('name',   'string');
+$userTable->addColumn('email',  'string');
+$userTable->addColumn('uuid',   'string');
+$userTable->addColumn('status', 'integer');
 
 $platform = $conn->getDatabasePlatform();
 $queries  = $schema->toSql($platform);
 $stmt     = $conn->query($queries[0]);
 $stmt->fetch();
 
-$uuid = 'uuid';
 $userData = [
-    'uuid'   => $uuid,
-    'status' => 1,
+    'name'   => 'name',
+    'email'  => 'email',
+    'uuid'   => 'uuid',
+    'status' => 1
 ];
 $conn->insert('user', $userData);
 
 $user = new User($conn);
-$user = $user->delete(['uuid'=>$uuid]);
 
-var_dump($user);
+var_dump($user->update(['name'=>'newname','email'=>'newemail','uuid'=>'uuid']));
 ?>
 --EXPECT--
-bool(true)
+array(3) {
+  ["hash"]=>
+  string(4) "uuid"
+  ["name"]=>
+  string(7) "newname"
+  ["email"]=>
+  string(8) "newemail"
+}

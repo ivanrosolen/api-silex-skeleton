@@ -20,6 +20,7 @@ use Xuplau\Provider\ContentNegotiationServiceProvider;
 use Xuplau\Provider\ValidationServiceProvider;
 use Xuplau\Provider\LocaleServiceProvider;
 use Xuplau\Provider\TranslationServiceProvider;
+use Xuplau\Provider\SwiftmailerServiceProvider;
 
 $application = require_once realpath(__DIR__.'/../bootstrap.php');
 
@@ -30,5 +31,6 @@ $application->register(new ContentNegotiationServiceProvider);
 $application->register(new ValidationServiceProvider);
 $application->register(new LocaleServiceProvider);
 $application->register(new TranslationServiceProvider);
+$application->register(new SwiftmailerServiceProvider);
 
 $application->run();

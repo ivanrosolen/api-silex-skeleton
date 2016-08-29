@@ -50,6 +50,19 @@ class Create
 
         // colocar rmm4 links
 
+        // send email
+        $message = \Swift_Message::newInstance()
+            ->setSubject('New User')
+            ->setFrom(array('ivanrosolen@gmail.com'))
+            ->setTo(array('ivanrosolen@gmail.com'))
+            ->setBody(serialize($user))
+            ->setContentType('text/html');
+
+        $email = $application['mailer']->send($message);
+
+        if (!$email)
+            return $application->json('', 404);
+
         return $application->json($user,201);
 
     }

@@ -15,8 +15,8 @@
 
 namespace Xuplau\Provider;
 
-use Silex\Application;
-use Silex\ServiceProviderInterface;
+use Pimple\Container;
+use Pimple\ServiceProviderInterface;
 use Xuplau\Validation\Rules\UserCreateInput;
 use Xuplau\Validation\Rules\UserUpdateInput;
 use Xuplau\Validation\Rules\UserDeleteInput;
@@ -38,24 +38,24 @@ class ValidationServiceProvider implements ServiceProviderInterface
     /**
      * Register all routes
      *
-     * @param Application $application Application instance
+     * @param Container $container Container instance
      * @return Void
      */
-    public function register(Application $application)
+    public function register(Container $container)
     {
-        $application['user_create.validator'] = function() use ($application) {
+        $container['user_create.validator'] = function() use ($container) {
             return new UserCreateInput;
         };
-        $application['user_update.validator'] = function() use ($application) {
+        $container['user_update.validator'] = function() use ($container) {
             return new UserUpdateInput;
         };
-        $application['user_delete.validator'] = function() use ($application) {
+        $container['user_delete.validator'] = function() use ($container) {
             return new UserDeleteInput;
         };
-        $application['login.validator'] = function() use ($application) {
+        $container['login.validator'] = function() use ($container) {
             return new LoginInput;
         };
-        $application['renew_token.validator'] = function() use ($application) {
+        $container['renew_token.validator'] = function() use ($container) {
             return new AuthRenewInput;
         };
     }
@@ -63,10 +63,10 @@ class ValidationServiceProvider implements ServiceProviderInterface
     /**
      * Boot
      *
-     * @param Application $application Application instance
+     * @param Container $container Container instance
      * @return Void
      */
-    public function boot(Application $application)
+    public function boot(Container $container)
     {
         // Nothing here
     }

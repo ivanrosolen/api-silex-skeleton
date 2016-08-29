@@ -15,8 +15,8 @@
 
 namespace Xuplau\Provider;
 
-use Silex\Application;
-use Silex\ServiceProviderInterface;
+use Pimple\Container;
+use Pimple\ServiceProviderInterface;
 use Xuplau\Database\User;
 use Xuplau\Database\Blacklist;
 
@@ -35,26 +35,26 @@ class DatabaseServiceProvider implements ServiceProviderInterface
     /**
      * Register all objects
      *
-     * @param Application $application Application instance
+     * @param Container $container Container instance
      * @return Void
      */
-    public function register(Application $application)
+    public function register(Container $container)
     {
-        $application['user'] = function() use ($application) {
-            return new User($application['dbs']['apidb'],'user');
+        $container['user'] = function() use ($container) {
+            return new User($container['dbs']['apidb'],'user');
         };
-        $application['blacklist'] = function() use ($application) {
-            return new Blacklist($application['dbs']['apidb'],'blacklist');
+        $container['blacklist'] = function() use ($container) {
+            return new Blacklist($container['dbs']['apidb'],'blacklist');
         };
     }
 
     /**
      * Boot
      *
-     * @param Application $application Application instance
+     * @param Container $container Container instance
      * @return Void
      */
-    public function boot(Application $application)
+    public function boot(Container $container)
     {
         // Nothing here
     }

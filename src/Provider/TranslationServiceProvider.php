@@ -17,10 +17,11 @@ namespace Xuplau\Provider;
 
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
-use Silex\Provider\DoctrineServiceProvider as DoctrineProvider;
+use Silex\Provider\TranslationServiceProvider as TranslationProvider;
+use Symfony\Component\Translation\Loader\YamlFileLoader;
 
 /**
- * Provides doctrine DBAL
+ * Serivice to provide all translations
  *
  * @version 1.0.0
  *
@@ -29,21 +30,29 @@ use Silex\Provider\DoctrineServiceProvider as DoctrineProvider;
  * @author  William Espindola <oi@williamespindola.com.br>
  *
  */
-class DoctrineServiceProvider implements ServiceProviderInterface
+class TranslationServiceProvider implements ServiceProviderInterface
 {
     /**
-     * Register doctrine provider
+     * Register all languages
      *
      * @param Container $container Container instance
      * @return Void
      */
     public function register(Container $container)
     {
-        $container->register(new DoctrineProvider(),[
-            'dbs.options' => [
-                'apidb' => $container['apidb']
-            ]
-        ]);
+
+        $container->register(new TranslationProvider);
+
+        $container['translator'] = $container->extend('translator', function ($translator, $container) {
+            $translator->addLoader('yaml', new YamlFileLoader);
+
+            foreach ($container['locales'] as $lang => $path) {
+                $translator->addResource('yaml', $path, $lang);
+            }
+
+            return $translator;
+        });
+
     }
 
     /**

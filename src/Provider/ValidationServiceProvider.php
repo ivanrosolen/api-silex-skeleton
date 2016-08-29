@@ -36,7 +36,7 @@ use Xuplau\Validation\Rules\AuthRenewInput;
 class ValidationServiceProvider implements ServiceProviderInterface
 {
     /**
-     * Register all routes
+     * Register all validators
      *
      * @param Container $container Container instance
      * @return Void

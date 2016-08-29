@@ -17,10 +17,10 @@ namespace Xuplau\Provider;
 
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
-use Silex\Provider\DoctrineServiceProvider as DoctrineProvider;
+use Silex\Provider\LocaleServiceProvider as LocaleProvider;
 
 /**
- * Provides doctrine DBAL
+ * Provides locale
  *
  * @version 1.0.0
  *
@@ -29,21 +29,18 @@ use Silex\Provider\DoctrineServiceProvider as DoctrineProvider;
  * @author  William Espindola <oi@williamespindola.com.br>
  *
  */
-class DoctrineServiceProvider implements ServiceProviderInterface
+class LocaleServiceProvider implements ServiceProviderInterface
 {
     /**
-     * Register doctrine provider
+     * Register locale
      *
      * @param Container $container Container instance
      * @return Void
      */
     public function register(Container $container)
     {
-        $container->register(new DoctrineProvider(),[
-            'dbs.options' => [
-                'apidb' => $container['apidb']
-            ]
-        ]);
+
+        $container->register(new LocaleProvider);
     }
 
     /**

@@ -47,7 +47,7 @@ class RouteServiceProvider implements ServiceProviderInterface
      */
     public function register(Container $container)
     {
-        $container->get('/', new Index());
+        $container->get('/', new Index);
 
         $container->post('/user',          new UserCreate);
         $container->put('/user/{hash}',    new UserUpdate);

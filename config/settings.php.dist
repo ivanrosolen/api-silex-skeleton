@@ -37,5 +37,10 @@ return [
         'audience'   => getenv('AUTH_AUDIENCE'),
         'key'        => getenv('AUTH_KEY'),
         'expiration' => getenv('AUTH_EXPIRATION')
-    ]
+    ],
+    'locales' => [
+        'en'    => realpath(__DIR__.'/../locales/en.yml'),
+        'pt-BR' => realpath(__DIR__.'/../locales/pt-BR.yml'),
+    ],
+    'app_locale' => 'en'
 ];

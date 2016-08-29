@@ -35,9 +35,10 @@ class Index
      */
     public function __invoke(Application $application)
     {
+
         return $application->json([
-            'description' => 'RESTfull API using Silex and JWT',
-            'version' => $application['version']
+            'description' => $application['translator']->trans('index'),
+            'version'     => $application['version']
         ]);
     }
 }

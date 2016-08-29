@@ -41,9 +41,20 @@ class RequestValidator
 
         $uri = $request->getRequestUri();
 
+        if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) &&
+            !is_null($_SERVER['HTTP_ACCEPT_LANGUAGE']))
+        {
+            $locale = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
+            if (in_array($locale, array_keys($application['locales'])))
+                $application['translator']->setLocale($locale);
+        }
+
         preg_match('/^(\/auth.+|\/$)/', $uri, $matches);
 
         if(count($matches) > 0) return;
+
+        if (is_null($request->headers->get('Authorization')))
+            return $application->json('Expectation Failed',417);
 
         $token = str_replace('Bearer ', '', $request->headers->get('Authorization'));
 
@@ -53,20 +64,18 @@ class RequestValidator
         $check     = new Check($application['auth'], $token);
         $blacklist = new Blacklist($application, $token);
 
-        if (!$check->verify()) {
+        if (!$check->verify())
+        {
             $blacklist->save();
             return $application->json('Forbidden',403);
         }
 
-        if($blacklist->check()) {
+        if($blacklist->check())
             return $application->json('Forbidden',403);
-        }
 
-        if (!$check->validate()) {
+
+        if (!$check->validate())
             return $application->json('Expired',412);
-        }
-
-        // todo: check if user is active?
 
     }
 }

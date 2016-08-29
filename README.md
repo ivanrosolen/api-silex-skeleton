@@ -9,7 +9,7 @@ With Docker and Composer installed in your system just run the following command
 ```bash
 ./bin/minion
 
-3) Start
+2) Start
 
 ```
 
@@ -25,15 +25,13 @@ Run `./bin/minion` and you will see this options:
 
 1) Help
 
-2) PHP Docs
+2) Start
 
-3) Start
+3) Close
 
-4) Close
+4) Restart
 
-5) Restart
-
-6) Quit
+5) Quit
 
 ## Change log
 

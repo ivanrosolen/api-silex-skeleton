@@ -9,7 +9,6 @@ _help()
 PS3='bannnaaaaaaa: '
 options=(
 "Help"
-"PHP Docs"
 "Start"
 "Stop"
 "Restart"
@@ -20,21 +19,6 @@ do
     case $opt in
         "Help")
             _help
-            break
-            ;;
-        "PHP Docs")
-            ./vendor/bin/phpdoc \
-                -d src/ \
-                --target ./docs/php-html \
-                --cache-folder ./cache \
-                --title "API Silex Skeleton"
-            ./vendor/bin/phpdoc \
-                -d src/ \
-                --target ./docs/php-html \
-                --cache-folder ./cache \
-                --template xml
-                --title "API Silex Skeleton"
-            ./vendor/bin/phpdocmd ./docs/php-html/structure.xml ./docs/php-md
             break
             ;;
         "Start")

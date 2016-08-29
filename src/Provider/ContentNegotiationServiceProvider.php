@@ -16,17 +16,17 @@
 namespace Xuplau\Provider;
 
 use Xuplau\Handler\ErrorHandler;
-use Silex\Application;
-use Silex\ServiceProviderInterface;
+use Pimple\Container;
+use Pimple\ServiceProviderInterface;
 
 class ContentNegotiationServiceProvider implements ServiceProviderInterface
 {
-    public function register(Application $application)
+    public function register(Container $container)
     {
-        $application->error(new ErrorHandler($application));
+        $container->error(new ErrorHandler($container));
     }
 
-    public function boot(Application $application)
+    public function boot(Container $container)
     {
         // Nothing here
     }

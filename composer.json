@@ -3,19 +3,16 @@
     "description": "API Silex Skeleton",
     "homepage": "https://github.com/ivanrosolen/api-silex-skeleton",
     "require": {
-        "php" : ">=5.6",
-        "silex/silex": "~1.3",
+        "php" : ">=7.0",
+        "silex/silex": "~2.0",
         "doctrine/dbal": "v2.5.4",
         "lcobucci/jwt":"~3.1",
         "respect/validation": "1.0.4",
         "ramsey/uuid": "~3.4"
     },
     "require-dev": {
-        "phpunit/phpunit" : "5.3.*",
-        "squizlabs/php_codesniffer": "2.*",
-        "guzzlehttp/guzzle": "~6.0",
-        "evert/phpdoc-md" : "~0.2.0",
-        "phpdocumentor/phpdocumentor": "2.9.x"
+        "phpunit/phpunit" : "5.5.*",
+        "guzzlehttp/guzzle": "~6.0"
     },
     "autoload": {
         "psr-4": {

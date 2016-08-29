@@ -15,8 +15,8 @@
 
 namespace Xuplau\Provider;
 
-use Silex\Application;
-use Silex\ServiceProviderInterface;
+use Pimple\Container;
+use Pimple\ServiceProviderInterface;
 use Silex\Provider\DoctrineServiceProvider as DoctrineProvider;
 
 /**
@@ -34,14 +34,14 @@ class DoctrineServiceProvider implements ServiceProviderInterface
     /**
      * Register all routes
      *
-     * @param Application $application Application instance
+     * @param Container $container Container instance
      * @return Void
      */
-    public function register(Application $application)
+    public function register(Container $container)
     {
-        $application->register(new DoctrineProvider(),[
+        $container->register(new DoctrineProvider(),[
             'dbs.options' => [
-                'apidb' => $application['apidb']
+                'apidb' => $container['apidb']
             ]
         ]);
     }
@@ -49,10 +49,10 @@ class DoctrineServiceProvider implements ServiceProviderInterface
     /**
      * Boot
      *
-     * @param Application $application Application instance
+     * @param Container $container Container instance
      * @return Void
      */
-    public function boot(Application $application)
+    public function boot(Container $container)
     {
         // Nothing here
     }

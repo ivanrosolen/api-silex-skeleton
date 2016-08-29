@@ -36,8 +36,6 @@ class Index
     public function __invoke(Application $application)
     {
 
-        echo $application['translator']->getLocale();
-        //var_dump($application['translator']);
         return $application->json([
             'description' => $application['translator']->trans('index'),
             'version'     => $application['version']

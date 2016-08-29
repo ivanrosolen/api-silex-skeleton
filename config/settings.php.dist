@@ -41,5 +41,6 @@ return [
     'locales' => [
         'en'    => realpath(__DIR__.'/../locales/en.yml'),
         'pt-BR' => realpath(__DIR__.'/../locales/pt-BR.yml'),
-    ]
+    ],
+    'app_locale' => 'en'
 ];

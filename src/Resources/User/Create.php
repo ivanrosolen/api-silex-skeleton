@@ -50,6 +50,26 @@ class Create
 
         // colocar rmm4 links
 
+        // send email
+        $transport = \Swift_SmtpTransport::newInstance(
+            $application['swiftmailer']['host'],
+            $application['swiftmailer']['port']);
+
+        //$transport->setUsername($application['swiftmailer']['user']);
+        //$transport->setPassword($application['swiftmailer']['pwd']);
+
+        $mailer  = \Swift_Mailer::newInstance($transport);
+
+
+        $message = \Swift_Message::newInstance()
+            ->setSubject('New User')
+            ->setFrom(array($application['swiftmailer']['from']))
+            ->setTo(array('ivanrosolen@gmail.com'))
+            ->setBody(serialize($user))
+            ->setContentType('text/html');
+
+        $send = $mailer->send($message);
+
         return $application->json($user,201);
 
     }

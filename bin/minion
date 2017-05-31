@@ -3,43 +3,86 @@
 # minion functions
 _help()
 {
-    echo "Daa hahaha hana dul sae aaaaaah bannnaaaaaaa"
+    local COLOR='\033[1;32m' # Light Green
+    local NC='\033[0m' # No Color
+    echo -e "\n${COLOR}Usage: $0 [OPTION]${NC}\n" >&2
+    echo "Options:"
+    echo -e "   ${COLOR}help, -h${NC}        Display this help and exit"
+    echo -e "   ${COLOR}console${NC}         Initializes bash command line on PHP server"
+    echo -e "   ${COLOR}start${NC}           Initializes development servers"
+    echo -e "   ${COLOR}stop${NC}            Finish development servers"
+    echo -e "   ${COLOR}restart${NC}         Force reboot of development servers"
+    echo -e "   ${COLOR}destroy${NC}         Stop and remove containers, networks, images, and volumes"
+    exit 1
 }
 
-PS3='bannnaaaaaaa: '
-options=(
-"Help"
-"Start"
-"Stop"
-"Restart"
-"Quit"
-)
-select opt in "${options[@]}"
-do
-    case $opt in
-        "Help")
+_print_options()
+{
+    PS3='Select Option: '
+    OPTIONS=(
+    "Help"
+    "Console"
+    "Start"
+    "Stop"
+    "Restart"
+    "Destroy"
+    "Quit"
+    )
+    select OPT in "${OPTIONS[@]}"
+    do
+        echo "${OPT,,}"
+        break;
+    done
+
+}
+
+_execute()
+{
+    case $1 in
+        "-h"|"help")
             _help
-            break
             ;;
-        "Start")
-            echo "Installing..."
+        "start")
+            echo "Starting..."
             docker-compose up -d
-            break
             ;;
-        "Stop")
+        "stop")
             echo "Stoping..."
             docker stop $(docker ps -a -q)
-            break
+#           docker-compose stop
             ;;
-        "Restart")
+        "destroy")
+            echo "Destroying..."
+            docker-compose down
+            ;;
+        "restart")
             echo "Restarting..."
             docker-compose up -d --force-recreate
-            break
             ;;
-        "Quit")
-            break
+        "console")
+            echo -e "Starting Console...\n"
+            docker-compose exec php bash
             ;;
-        *) echo invalid option;;
+        "quit")
+            ;;
+        *)
+            echo -e "INVALID OPTION...\n\n"
+            OPTION=$(_print_options)
+            _execute ${OPTION}
+            ;;
     esac
-done
+}
+
+if [ "$1" != "" ]; then
+    _execute "$1"
+else
+    OPTION=$(_print_options)
+    _execute ${OPTION}
+fi
+
+
+
+
+
+
 

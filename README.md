@@ -7,9 +7,7 @@ Skeleton using [Silex](http://silex.sensiolabs.org) and [Json Web Token](http://
 With Docker and Composer installed in your system just run the following command on project root:
 
 ```bash
-./bin/minion
-
-2) Start
+./bin/minion start
 
 ```
 
@@ -21,17 +19,27 @@ Import [Postman](api-silex-skeleton.postman_collection.json) Collection
 
 ### Minion (shell task manager)
 
-Run `./bin/minion` and you will see this options:
+Usage: ./bin/minion [OPTION]
 
-1) Help
+```bash
+Options:
+   console         Initializes bash command line on PHP server
+   start           Initializes development servers
+   stop            Finish development servers
+   restart         Force reboot of development servers
+   destroy         Stop and remove containers, networks, images, and volumes
+   help, -h        Display this help and exit
+```
 
-2) Start
+Or run `./bin/minion` without option and you will see this options:
 
-3) Close
-
-4) Restart
-
-5) Quit
+1) Help     
+2) Console  
+3) Start
+4) stop
+5) Restart 
+6) Destroy
+7) Quit     
 
 ## Change log
 
